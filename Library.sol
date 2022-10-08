@@ -15,9 +15,16 @@ contract Library is Ownable{
         uint256 copies;
     }
 
+    //Mapping that helps to manage how many copies of each book are out.
     mapping(uint => uint) public bookIdToCopiesOut;
+    
+    // Mapping that saves a boolean if a book id is now borrowed by an address
     mapping(address => mapping(uint => bool)) public addressBookIdCopiesBorrowed; 
+    
+    // This keeps the order in which the books have been borrowed
     mapping(uint256 => address[]) public borrowers;
+    
+    // This is where the book info is stored. THE INDEX OF THE BOOK IN THE ARRAY IS TAKEN AS THE BOOK ID.
     Book[] public bookArray;
 
     // Owner Functions
